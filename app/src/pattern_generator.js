@@ -2,11 +2,12 @@ const patterns = require('./patterns');
 const toUnicode = require('./utils/to_unicode');
 
 const patternGenerator = function patternGenerator(preMatchRule, postMatchRule, targetWord) {
-  var prePattern = patterns.FRONT_WORD_PATTERN;
-  var postPattern = '';
+  let prePattern = patterns.FRONT_WORD_PATTERN;
+  let postPattern = '';
 
-  switch(preMatchRule) {
-    case 'all': break;
+  switch (preMatchRule) {
+    case 'all':
+      break;
     case 'whitespace':
       prePattern += patterns.WHITESPACE_PATTERN;
       break;
@@ -19,9 +20,11 @@ const patternGenerator = function patternGenerator(preMatchRule, postMatchRule, 
     case 'head':
       prePattern = patterns.HEAD_PATTERN;
       break;
+    default:
+      break;
   }
 
-  switch(postMatchRule) {
+  switch (postMatchRule) {
     case 'all':
       postPattern = patterns.BACK_WORD_PATTERN;
       break;
@@ -37,12 +40,14 @@ const patternGenerator = function patternGenerator(preMatchRule, postMatchRule, 
     case 'end':
       postPattern = patterns.END_PATTERN;
       break;
+    default:
+      break;
   }
 
-  var beforeWord = '(' + toUnicode(targetWord) + ')';
-  var regexStr = prePattern + beforeWord + postPattern;
-  console.log(regexStr);
+  const beforeWord = `(${toUnicode(targetWord)})`;
+  const regexStr = prePattern + beforeWord + postPattern;
+  // console.log(regexStr);
   return new RegExp(regexStr, 'g');
-}
+};
 
 module.exports = patternGenerator;
