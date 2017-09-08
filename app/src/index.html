@@ -1,28 +1,11 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
-    <style>
-        .ui.action.input input[type="file"] {
-            display: none;
-        }
-        .highlight {
-            background-color: pink;
-        }
-        .main.container {
-            margin-top: 7em;
-            margin-bottom: 7em;
-        }
-        .ui.segment {
-            padding-top: 1.5em;
-            padding-bottom: 1.5em;
-        }
-    </style>
 </head>
 <body>
     <div class="ui inverted menu">
         <div class="ui container">
             <a href="#" class="header item">
-                <img class="logo" src="assets/images/logo.png">
+                <!-- <img class="logo" src="assets/images/logo.png"> -->
                 일괄 바꿈
             </a>
             <a href="#" class="item">Home</a>
@@ -34,20 +17,18 @@
             <div class="ui segment">
                 <h3 class="first">
                     <i class="file text outline icon"></i>
-                    고칠 파일 업로드
+                    원문
                 </h3>
-                <p>
-                    아직은 <span class="ui label">.txt</span> 파일만 지원합니다.
-                </p>
-                <div class="ui action input">
-                    <input type="text" placeholder="File 1" readonly>
-                    <input type="file">
-                    <div class="ui icon button">
-                        <i class="attach icon"></i>
+                <div class="ui form">
+                    <div class="field">
+                        <textarea name="before-article" id="before-article" rows="10">영어와 불어는 서로
+바람이 불어 어디로
+이와 더불어 개인의
+나팔을 불어라 돛을</textarea>
                     </div>
                 </div>
             </div>
-            <div class="ui segment">
+            <div id="fix-word" class="ui segment">
                 <h3 class="first">
                     <i class="font icon"></i>
                     고칠 낱말
@@ -56,17 +37,17 @@
                     <div class="three fields">
                         <div class="field">
                             <label>원문</label>
-                            <input type="text" placeholder="불어">
+                            <input type="text" class="before" name="before-fix-word" value="불어" placeholder="불어">
                         </div>
                         <div class="field">
                             <label>바꾼 후</label>
-                            <input type="text" placeholder="프랑스어">
+                            <input type="text" class="after" name="after-fix-word" value="프랑스어" placeholder="프랑스어">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="ui segment">
+            <div id="fix-rule" class="ui segment">
                 <h3 class="first">
                     <i class="filter icon"></i>
                     규칙
@@ -75,34 +56,39 @@
                     <div class="three fields">
                         <div class="field">
                             <label>앞 부분과 일치</label>
-                            <select class="ui compact selection dropdown">
+                            <select name="before-fix-rule" class="pre ui compact selection dropdown">
                                 <option value="all">상관 없음</option>
                                 <option value="whitespace">빈 칸</option>
-                                <option value="whitespace">빈 칸 아님</option>
-                                <option value="">문장 처음</option>
+                                <option value="alphabet">알파벳</option>
+                                <option value="korean">한글</option>
+                                <option value="head">문장 처음</option>
                             </select>
                         </div>
                         <div class="field">
                             <label></label>
-                            <h3>불어</h3>
+                            <h3 class="before">불어</h3>
                         </div>
                         <div class="field">
                             <label>뒷 부분과 일치</label>
-                            <select class="ui compact selection dropdown">
+                            <select name="after-fix-rule" class="post ui compact selection dropdown">
                                 <option value="all">상관 없음</option>
                                 <option value="whitespace">빈 칸</option>
-                                <option value="whitespace">빈 칸 아님</option>
-                                <option value="">문장 마지막</option>
+                                <option value="alphabet">알파벳</option>
+                                <option value="korean">한글</option>
+                                <option value="end">문장 마지막</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <button class="ui button">
-                    <i class="exchange icon"></i>
-                    고칠 내용 확인하기
-                </button>
             </div>
-
+        </div>
+        <div>
+            <button id="button-preview" class="fluid ui button">
+                <i class="exchange icon"></i>
+                고칠 내용 확인하기
+            </button>
+        </div>
+        <div id="preview-fix-list" class="ui segments">
             <div class="ui segment">
                 <h3 class="first">
                     <i class="checkmark icon"></i>
@@ -182,20 +168,24 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="3">
-                                <button class="ui button">
-                                    <i class="download icon"></i>
-                                    적용한 파일 다운로드하기
-                                </button>
-                            </th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
+            <div id="result" class="ui segment">
+                <h3 class="first">
+                    결과
+                </h3>
+                <div class="ui form">
+                    <div class="disabled field">
+                        <textarea name="result-article" id="article" rows="10"></textarea>
+                    </div>
+                </div>
+                <p></p>
+                <button class="ui button">
+                    <i class="copy icon"></i>
+                    클립보드로 복사하기
+                </button>
+            </div>
         </div>
-
     </div>
     <div class="ui inverted vertical footer segment">
         <div class="ui center aligned container">
@@ -233,7 +223,7 @@
                 </div>
             </div>
             <div class="ui inverted section divider"></div>
-            <img src="assets/images/logo.png" class="ui centered mini image">
+            <!-- <img src="assets/images/logo.png" class="ui centered mini image"> -->
             <div class="ui horizontal inverted small divided link list">
             <a class="item" href="#">Site Map</a>
             <a class="item" href="#">Contact Us</a>
@@ -243,16 +233,4 @@
         </div>
     </div>
 </body>
-
-<script>
-    $("input:text").click(function() {
-      $(this).parent().find("input:file").click();
-    });
-
-    $('input:file', '.ui.action.input')
-      .on('change', function(e) {
-        var name = e.target.files[0].name;
-        $('input:text', $(e.target).parent()).val(name);
-      });
-</script>
 </html>

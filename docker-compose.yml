@@ -1,0 +1,16 @@
+version: '2'
+
+volumes:
+  node_modules: {}
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: ./compose/node/Dockerfile
+    command: /www/start-dev.sh
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./app:/www/app
+      - node_modules:/www/app/node_modules
