@@ -1,13 +1,18 @@
 {
   "extends": "airbnb-base",
   "env": {
-    "jquery": true
+    "jquery": true,
+    "mocha": true
   },
+  "plugins": [
+    "mocha"
+  ],
   "rules": {
-    "new-cap": ["off"],
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "next|Promise" }],
     "arrow-body-style": ["off"],
-    "space-before-function-paren": ["error", "never"],
-    "no-console": ["error"]
+    "mocha/no-exclusive-tests": "error",
+    "new-cap": ["off"],
+    "no-console": ["error"],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "next|Promise" }],
+    "space-before-function-paren": ["error", "never"]
   }
 }
