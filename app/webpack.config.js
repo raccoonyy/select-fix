@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
@@ -9,7 +9,7 @@ module.exports = {
     vendors: [
       'semantic-ui-css',
       'jquery',
-    ]
+    ],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: 'html-loader',
       },
       {
         test: /.js$/,
@@ -30,30 +30,30 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
       },
       {
-         test: /\.(gif|png|jpg)$/,
-         use: [ 'file-loader' ]
+        test: /\.(gif|png|jpg)$/,
+        use: ['file-loader'],
       },
       {
         test: /\.(eot|ttf|woff|woff2|svg)$/,
-        loader: 'url-loader'
-      }
+        loader: 'url-loader',
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
-    new ExtractTextPlugin("styles.css"),
+    new ExtractTextPlugin('styles.css'),
   ],
   devServer: {
     compress: true,
@@ -63,5 +63,5 @@ module.exports = {
     hot: true,
     inline: true,
     port: 9000,
-  }
-}
+  },
+};
