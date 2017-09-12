@@ -6,7 +6,8 @@
     "build": "webpack",
     "lint": "eslint .",
     "start": "webpack-dev-server",
-    "test": "mocha -w './test/*.spec.js' --reporter=nyan"
+    "test": "mocha './test/*.spec.js'",
+    "test:dev": "mocha -w './test/*.spec.js' --reporter=nyan"
   },
   "repository": {
     "type": "git",
