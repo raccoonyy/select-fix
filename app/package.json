@@ -30,7 +30,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "chai": "*",
-    "css-loader": "^0.28.7",
+    "css-loader": "^3.2.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.7.0",
@@ -42,8 +42,8 @@
     "mocha": "*",
     "nodemon": "^1.11.0",
     "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.5.5",
+    "url-loader": "^2.1.0",
+    "webpack": "^3.1.0",
     "webpack-dev-server": "^2.7.1",
     "webpack-hot-middleware": "^2.18.2"
   }
