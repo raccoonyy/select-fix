@@ -1,5 +1,5 @@
 {
-  "name": "batchfix",
+  "name": "select-fix",
   "version": "0.0.1",
   "description": "",
   "scripts": {
@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raccoonyy/batchfix.git"
+    "url": "git+https://github.com/raccoonyy/select-fix.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/raccoonyy/batchfix/issues"
+    "url": "https://github.com/raccoonyy/select-fix/issues"
   },
-  "homepage": "https://github.com/raccoonyy/batchfix#readme",
+  "homepage": "https://github.com/raccoonyy/select-fix#readme",
   "dependencies": {
-    "jquery": "3.2.1",
+    "jquery": "^3.4.1",
     "semantic-ui-css": "^2.2.12"
   },
   "devDependencies": {
