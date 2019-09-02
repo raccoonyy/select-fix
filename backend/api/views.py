@@ -1,5 +1,4 @@
 import jpype
-from konlpy import init_jvm
 from konlpy.tag import Hannanum
 
 from rest_framework.decorators import api_view
