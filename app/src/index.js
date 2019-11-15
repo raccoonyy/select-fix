@@ -1,5 +1,4 @@
 require('./styles.css');
-require('semantic-ui-css/semantic.min.css');
 const patternMatcher = require('./pattern_matcher');
 
 const previewButton = $('#button-preview');
