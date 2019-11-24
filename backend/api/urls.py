@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import hannanum
+from .views import analyse
 
 app_name = 'api'
 urlpatterns = [
-    path('api/hannanum/', hannanum)
+    path('api/analyse/', analyse)
 ]
